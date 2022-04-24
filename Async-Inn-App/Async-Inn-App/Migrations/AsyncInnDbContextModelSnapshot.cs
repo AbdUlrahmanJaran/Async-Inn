@@ -112,6 +112,30 @@ namespace Async_Inn_App.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Async_Inn_App.Models.HotelRoom", b =>
+                {
+                    b.Property<int>("HotelID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomID")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("PetFriendly")
+                        .HasColumnType("tinyint");
+
+                    b.Property<decimal>("Rate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("RoomNumber")
+                        .HasColumnType("int");
+
+                    b.HasKey("HotelID", "RoomID");
+
+                    b.HasIndex("RoomID");
+
+                    b.ToTable("HotelRooms");
+                });
+
             modelBuilder.Entity("Async_Inn_App.Models.Room", b =>
                 {
                     b.Property<int>("ID")
@@ -148,6 +172,76 @@ namespace Async_Inn_App.Migrations
                             Layout = 2,
                             Name = "FirstTwoBedroom"
                         });
+                });
+
+            modelBuilder.Entity("Async_Inn_App.Models.RoomAmenity", b =>
+                {
+                    b.Property<int>("RoomID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AmenityID")
+                        .HasColumnType("int");
+
+                    b.HasKey("RoomID", "AmenityID");
+
+                    b.HasIndex("AmenityID");
+
+                    b.ToTable("RoomAmenities");
+                });
+
+            modelBuilder.Entity("Async_Inn_App.Models.HotelRoom", b =>
+                {
+                    b.HasOne("Async_Inn_App.Models.Hotel", "Hotel")
+                        .WithMany("HotelRooms")
+                        .HasForeignKey("HotelID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Async_Inn_App.Models.Room", "Room")
+                        .WithMany("HotelRooms")
+                        .HasForeignKey("RoomID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hotel");
+
+                    b.Navigation("Room");
+                });
+
+            modelBuilder.Entity("Async_Inn_App.Models.RoomAmenity", b =>
+                {
+                    b.HasOne("Async_Inn_App.Models.Amenity", "Amenity")
+                        .WithMany("RoomAmenities")
+                        .HasForeignKey("AmenityID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Async_Inn_App.Models.Room", "Room")
+                        .WithMany("RoomAmenities")
+                        .HasForeignKey("RoomID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Amenity");
+
+                    b.Navigation("Room");
+                });
+
+            modelBuilder.Entity("Async_Inn_App.Models.Amenity", b =>
+                {
+                    b.Navigation("RoomAmenities");
+                });
+
+            modelBuilder.Entity("Async_Inn_App.Models.Hotel", b =>
+                {
+                    b.Navigation("HotelRooms");
+                });
+
+            modelBuilder.Entity("Async_Inn_App.Models.Room", b =>
+                {
+                    b.Navigation("HotelRooms");
+
+                    b.Navigation("RoomAmenities");
                 });
 #pragma warning restore 612, 618
         }

@@ -32,10 +32,12 @@ namespace Async_Inn_App
                 options.UseSqlServer(connectionString);
             });
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(
+                option => option.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddTransient<IHotel, HotelRepository>();
             services.AddTransient<IRoom, RoomRepository>();
             services.AddTransient<IAmenity, AmenityRepository>();
+            services.AddTransient<IHotelRoom, HotelRoomRepository>();
 
         }
 
