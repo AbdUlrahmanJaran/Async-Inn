@@ -127,3 +127,6 @@ C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\zh-Han
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
