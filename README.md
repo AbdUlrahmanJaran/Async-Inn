@@ -18,11 +18,34 @@ Dependency Injection (DI) is a design pattern allows the creation of dependent o
 ### GET a Room: /api/Rooms/1<br>
 ![Rooms/1](./images/Rooms-1.png)
 
+#### after DTO
+```JSON
+{
+    "id": 1,
+    "name": "FirstStudio",
+    "layout": 0,
+    "amenities": [
+        {
+            "id": 1,
+            "name": "FirstStudio"
+        }
+    ]
+}
+```
+
 ### GET an Amenity: /api/Amenities/1<br>
 ![Amenities/1](./images/Amenities-1.png)
 
-### GET all the rooms for a hotel: /api/HotelRooms/{hotelId}
-```c#
+
+#### after DTO
+```JSON
+{
+    "id": 1,
+    "name": "Coffee Machine"
+}
+```
+### GET all the rooms for a hotel: /api/HotelRooms/{hotelId}/Rooms
+```JSON
 [
     {
         "hotelID": 1,
@@ -62,7 +85,7 @@ Dependency Injection (DI) is a design pattern allows the creation of dependent o
 ```
 
 ### GET all room details for a specific room: /api/HotelRooms/{hotelId}/Rooms/{roomNumber}
-```c#
+```JSON
 {
     "hotelID": 1,
     "roomID": 1,
@@ -98,11 +121,51 @@ Dependency Injection (DI) is a design pattern allows the creation of dependent o
     }
 }
 ```
+
+#### after DTO
+```JSON
+{
+    "hotelID": 1,
+    "roomNumber": 1,
+    "rate": 1.00,
+    "petFriendly": false,
+    "roomID": 1,
+    "room": {
+        "id": 1,
+        "name": "FirstStudio",
+        "layout": 0,
+        "amenities": [
+            {
+                "id": 1,
+                "name": "Coffee Machine"
+            }
+        ]
+    }
+}
+```
+
+### GET all the Amenities: /api/Amenities
+#### after DTO
+```JSON
+[
+    {
+        "id": 1,
+        "name": "Coffee Machine"
+    },
+    {
+        "id": 2,
+        "name": "Air Conditioner"
+    },
+    {
+        "id": 3,
+        "name": "Sea View"
+    }
+]
+```
+
 ### GET all the Hotels: /api/Hotels
 
 ### GET all the rooms: /api/Rooms
-
-### GET all the Amenities: /api/Amenities
 
 ### POST to add a room to a hotel: /api/HotelRooms/{hotelId}/Rooms
 

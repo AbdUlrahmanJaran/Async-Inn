@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Async_Inn_App.Data;
 using Async_Inn_App.Models;
 using Async_Inn_App.Models.Interfaces;
+using Async_Inn_App.Models.DTO;
 
 namespace Async_Inn_App.Controllers
 {
@@ -34,14 +35,14 @@ namespace Async_Inn_App.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Room>> GetRoom(int id)
         {
-            Room room = await _room.GetRoom(id);
+            RoomDTO room = await _room.GetRoom(id);
             return Ok(room);
         }
 
         // PUT: api/Rooms/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRoom(int id, Room room)
+        public async Task<IActionResult> PutRoom(int id, RoomDTO room)
         {
             if (id != room.ID)
             {
@@ -56,7 +57,7 @@ namespace Async_Inn_App.Controllers
         // POST: api/Rooms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Room>> PostRoom(Room room)
+        public async Task<ActionResult<Room>> PostRoom(RoomDTO room)
         {
             Room newRoom = await _room.Create(room);
             return Ok(newRoom);
