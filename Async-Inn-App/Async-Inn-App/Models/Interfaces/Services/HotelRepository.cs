@@ -1,6 +1,7 @@
 ﻿using Async_Inn_App.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Async_Inn_App.Models.Interfaces.Services
@@ -22,12 +23,24 @@ namespace Async_Inn_App.Models.Interfaces.Services
         }
         public async Task<List<Hotel>> GetHotels()
         {
-            var hotels = await _context.Hotels.ToListAsync();
+            var hotels = await _context.Hotels
+                .Include(x => x.HotelRooms)
+                .ThenInclude(x => x.Room)
+                .ThenInclude(x => x.RoomAmenities)
+                .ThenInclude(x => x.Amenity)
+                .ToListAsync(); 
             return hotels;
         }
         public async Task<Hotel> GetHotel(int id)
         {
             Hotel hotel = await _context.Hotels.FindAsync(id);
+            var hotelRooms = await _context.HotelRooms
+                .Where(x => x.HotelID == id)
+                .Include(x => x.Room)
+                .ThenInclude(x => x.RoomAmenities)
+                .ThenInclude(x => x.Amenity)
+                .ToListAsync();
+            hotel.HotelRooms = hotelRooms;
             return hotel;
         }
         public async Task<Hotel> UpdateHotel(int id, Hotel hotel)

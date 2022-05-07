@@ -30,91 +30,39 @@ namespace Async_Inn_App.Controllers
             return Ok(hotelRooms);
         }
 
-        // GET: api/HotelRooms/5/2
-        [HttpGet("{hotelId}/{roomId}")]
-        public async Task<ActionResult<HotelRoom>> GetHotelRoom(int hotelId, int roomId)
+        // GET: api/HotelRooms/1/Rooms/1
+        [HttpGet("{hotelId}/Rooms/{roomNumber}")]
+        public async Task<ActionResult<HotelRoom>> GetHotelRoom(int hotelId, int roomNumber)
         {
-            var hotelRoom = await _hotelRoom.GetHotelRoom(hotelId, roomId);
-
-            if (hotelRoom == null)
-            {
-                return NotFound();
-            }
-
-            return hotelRoom;
+            var hotelRoom = await _hotelRoom.GetHotelRoom(hotelId, roomNumber);
+            return Ok(hotelRoom);
         }
 
-        //// PUT: api/HotelRooms/5
-        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutHotelRoom(int id, HotelRoom hotelRoom)
-        //{
-        //    if (id != hotelRoom.HotelID)
-        //    {
-        //        return BadRequest();
-        //    }
+        // PUT: api/HotelRooms/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutHotelRoom(HotelRoom hotelRoom)
+        {
+            var modifiedHotelRoom = await _hotelRoom.UpdateHotelRoom(hotelRoom);
+            return Ok(modifiedHotelRoom);
+        }
 
-        //    _hotelRoom.Entry(hotelRoom).State = EntityState.Modified;
+        // POST: api/HotelRooms
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost("{hotelId}/Rooms")]
+        public async Task<ActionResult<HotelRoom>> PostHotelRoom(int hotelId, HotelRoom hotelRoom)
+        {
+            await _hotelRoom.AddRoomToHotel(hotelId, hotelRoom);
+            return NoContent();
+        }
 
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!HotelRoomExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
-
-        //// POST: api/HotelRooms
-        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPost]
-        //public async Task<ActionResult<HotelRoom>> PostHotelRoom(HotelRoom hotelRoom)
-        //{
-        //    _context.HotelRooms.Add(hotelRoom);
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateException)
-        //    {
-        //        if (HotelRoomExists(hotelRoom.HotelID))
-        //        {
-        //            return Conflict();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return CreatedAtAction("GetHotelRoom", new { id = hotelRoom.HotelID }, hotelRoom);
-        //}
-
-        //// DELETE: api/HotelRooms/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteHotelRoom(int id)
-        //{
-        //    var hotelRoom = await _context.HotelRooms.FindAsync(id);
-        //    if (hotelRoom == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.HotelRooms.Remove(hotelRoom);
-        //    await _context.SaveChangesAsync();
-
-        //    return NoContent();
-        //}
+        // DELETE: api/HotelRooms/5
+        [HttpDelete("{hotelId}/Rooms/{roomId}")]
+        public async Task<IActionResult> DeleteHotelRoom(int hotelId, int roomId)
+        {
+            await _hotelRoom.DeleteRoomFromHotel(hotelId, roomId);
+            return NoContent();
+        }
 
         //private bool HotelRoomExists(int id)
         //{
