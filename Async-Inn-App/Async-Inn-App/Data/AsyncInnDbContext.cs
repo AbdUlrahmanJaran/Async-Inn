@@ -1,16 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Async_Inn_App.Models;
-
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Async_Inn_App.Data
 {
-    public class AsyncInnDbContext : DbContext
+    public class AsyncInnDbContext : IdentityDbContext<ApplicationUser>
     {
         public AsyncInnDbContext(DbContextOptions options) : base(options)
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // This calls the base method, and Identity needs it
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Hotel>().HasData(
                 new Hotel { ID = 1, City = "Amman", Country = "Jordan", Name = "AsyncInn Amman", Phone = "+962775777777", State = "", StreetAddress = "St1-2" },
                 new Hotel { ID = 2, City = "Irbid", Country = "Jordan", Name = "AsyncInn Irbid", Phone = "+962775777778", State = "", StreetAddress = "St3-4" },

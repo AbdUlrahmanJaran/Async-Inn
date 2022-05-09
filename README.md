@@ -11,6 +11,17 @@
 This API use Dependency Injection.
 Dependency Injection (DI) is a design pattern allows the creation of dependent objects outside of a class and provides those objects to a class through different ways. Using DI, we move the creation and binding of the dependent objects outside of the class that depends on them.
 
+## Identity
+Identity is the ability to add Authentication and Authorization to your web application. This includes registrations, logins, restricted access to specific members, and authentication through Facebook, Google, Twitter, etc…
+
+ASP.NET Core Identity was created to help with the security and management of users. It provides this abstraction layer between the application and the users/role data. We can use the API in it’s entirety, or just bits and pieces as we need (such as the salting/hashing by itself) or email services. There is a lot of flexibility within ASP.NET Core Identity. We have the ability to take or leave whatever we want. Identity combines well with EFCore and SQL Server.
+
+### Register
+![Register](../Async-Inn/images/Register.png)
+
+### Login
+![Login](../Async-Inn/images/Login.png)
+
 ## End Points
 ### GET a Hotel by Id: /api/Hotels/1<br>
 ![Hotels/1](./images/Hotels-1.png)

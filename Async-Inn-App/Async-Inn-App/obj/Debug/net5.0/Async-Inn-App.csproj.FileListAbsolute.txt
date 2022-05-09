@@ -130,3 +130,8 @@ C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\runtim
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
