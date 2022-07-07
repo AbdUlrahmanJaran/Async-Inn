@@ -15,6 +15,7 @@ using Async_Inn_App.Models.Interfaces.Services;
 using Async_Inn_App.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Async_Inn_App
 {
@@ -60,6 +61,27 @@ namespace Async_Inn_App
             services.AddTransient<IAmenity, AmenityRepository>();
             services.AddTransient<IHotelRoom, HotelRoomRepository>();
 
+            services.AddScoped<JwtTokenService>();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                // Tell the authenticaion scheme "how/where" to validate the token + secret
+                options.TokenValidationParameters = JwtTokenService.GetValidationParameters(Configuration);
+            });
+
+            services.AddAuthorization(options =>
+            {
+                // Add "Name of Policy", and the Lambda returns a definition
+                options.AddPolicy("create", policy => policy.RequireClaim("permissions", "create"));
+                options.AddPolicy("update", policy => policy.RequireClaim("permissions", "update"));
+                options.AddPolicy("delete", policy => policy.RequireClaim("permissions", "delete"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,6 +93,8 @@ namespace Async_Inn_App
             }
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

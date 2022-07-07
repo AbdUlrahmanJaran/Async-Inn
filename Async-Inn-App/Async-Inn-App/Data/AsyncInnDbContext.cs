@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Async_Inn_App.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using System;
+using System.Linq;
 
 namespace Async_Inn_App.Data
 {
@@ -9,6 +12,7 @@ namespace Async_Inn_App.Data
         public AsyncInnDbContext(DbContextOptions options) : base(options)
         {
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // This calls the base method, and Identity needs it
@@ -37,7 +41,37 @@ namespace Async_Inn_App.Data
 
             modelBuilder.Entity<HotelRoom>().HasKey(
                 hotelRooms => new {hotelRooms.HotelID , hotelRooms.RoomID });
+
+            SeedRole(modelBuilder, "DistrictManager", "create", "update", "delete");
+            SeedRole(modelBuilder, "PropertyManager", "create", "update");
+            SeedRole(modelBuilder, "Agent", "create", "update", "delete");
+
         }
+        private int nextId = 1;
+        private void SeedRole(ModelBuilder modelBuilder, string roleName, params string[] permissions)
+        {
+            var role = new IdentityRole
+            {
+                Id = roleName.ToLower(),
+                Name = roleName,
+                NormalizedName = roleName.ToUpper(),
+                ConcurrencyStamp = Guid.Empty.ToString()
+            };
+            modelBuilder.Entity<IdentityRole>().HasData(role);
+
+            var RoleClaims = permissions.Select(permission =>
+            new IdentityRoleClaim<string>
+            {
+                Id = nextId++,
+                RoleId = role.Id,
+                ClaimType = "permissions",
+                ClaimValue = permission
+            }
+            ).ToArray();
+
+            modelBuilder.Entity<IdentityRoleClaim<string>>().HasData(RoleClaims);
+        }
+
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Amenity> Amenities { get; set; }

@@ -140,3 +140,4 @@ C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Swashb
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\obj\Debug\net5.0\Async-Inn-App.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
