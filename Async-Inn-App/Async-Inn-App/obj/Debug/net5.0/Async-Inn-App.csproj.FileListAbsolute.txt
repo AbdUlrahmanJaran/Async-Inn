@@ -135,3 +135,8 @@ C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Micros
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\Async-Inn-App\obj\Debug\net5.0\Async-Inn-App.MvcApplicationPartsAssemblyInfo.cs
