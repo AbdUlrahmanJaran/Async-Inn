@@ -14,6 +14,7 @@ using Async_Inn_App.Models.Interfaces;
 using Async_Inn_App.Models.Interfaces.Services;
 using Async_Inn_App.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.OpenApi.Models;
 
 namespace Async_Inn_App
 {
@@ -43,6 +44,16 @@ namespace Async_Inn_App
             })
             .AddEntityFrameworkStores<AsyncInnDbContext>();
 
+            services.AddSwaggerGen(options =>
+            {
+                // Make sure get the "using Statement"
+                options.SwaggerDoc("v1", new OpenApiInfo()
+                {
+                    Title = "AsyncInn Hotels",
+                    Version = "v1",
+                });
+            });
+
             services.AddTransient<IUserService, IdentityUserRepository>();
             services.AddTransient<IHotel, HotelRepository>();
             services.AddTransient<IRoom, RoomRepository>();
@@ -65,7 +76,7 @@ namespace Async_Inn_App
             {
                 endpoints.MapControllers();
 
-                endpoints.MapGet("/", async context =>
+                endpoints.MapGet("/Home", async context =>
                 {
                     await context.Response.WriteAsync("Hello World!");
                 });
@@ -73,6 +84,15 @@ namespace Async_Inn_App
                 {
                     await context.Response.WriteAsync("Test!");
                 });
+            });
+
+            app.UseSwagger(options => {
+                options.RouteTemplate = "/api/{documentName}/swagger.json";
+            });
+
+            app.UseSwaggerUI(options => {
+                options.SwaggerEndpoint("/api/v1/swagger.json", "AsyncInn Hotels");
+                options.RoutePrefix = "";
             });
         }
     }
