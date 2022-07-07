@@ -244,3 +244,4 @@ C:\Users\user\Labs\Async-Inn\Async-Inn-App\TestAsync-Inn\obj\Debug\net5.0\refint
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\TestAsync-Inn\obj\Debug\net5.0\TestAsync-Inn.pdb
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\TestAsync-Inn\obj\Debug\net5.0\TestAsync-Inn.genruntimeconfig.cache
 C:\Users\user\Labs\Async-Inn\Async-Inn-App\TestAsync-Inn\obj\Debug\net5.0\ref\TestAsync-Inn.dll
+C:\Users\user\Labs\Async-Inn\Async-Inn-App\TestAsync-Inn\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
